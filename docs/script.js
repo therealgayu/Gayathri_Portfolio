@@ -58,24 +58,8 @@ document.addEventListener("DOMContentLoaded", function () {
   bindStaticUrls();
 
   const projectPages = {
-    web: {
-      title: "Web Projects",
-      subtitle: "Web applications and full-stack projects",
-      containerId: "web-projects-grid",
-    },
-
-    systems: {
-      title: "Systems Projects",
-      subtitle: "Cybersecurity, systems, and research projects",
-      containerId: "systems-projects-grid",
-    },
-
-    // Example for future page:
-    // ai: {
-    //   title: "AI Projects",
-    //   subtitle: "Artificial intelligence and machine learning projects",
-    //   containerId: "ai-projects-grid",
-    // },
+    web: { containerId: "web-projects-grid" },
+    systems: { containerId: "systems-projects-grid" },
   };
 
   // ==========================================
@@ -92,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
       technologies: ["MERN", "Mininet", "Ryu", "Snort", "Docker", "Jenkins"],
       github: projectLinks.idsSecureSdn.github,
       category: "web",
-      featured: true,
     },
     {
       id: "predictive-spoilage",
@@ -109,7 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
       ],
       github: projectLinks.predictiveSpoilage.github,
       category: "web",
-      featured: false,
       icon: "fa-solid fa-leaf",
     },
     {
@@ -121,7 +103,6 @@ document.addEventListener("DOMContentLoaded", function () {
       technologies: ["Java", "Desktop App", "Structured Data Handling"],
       github: projectLinks.synergy.github,
       category: "web",
-      featured: false,
     },
     {
       id: "school-management",
@@ -132,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
       technologies: ["Python", "Tkinter", "GUI"],
       github: projectLinks.schoolMgmt.github,
       category: "web",
-      featured: false,
     },
 
     // --- Research / Systems Projects ---
@@ -146,7 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
       technologies: ["MERN Stack", "Ollama (Gemma 3 1B)", "JWT"],
       github: projectLinks.cyberforensicsTrainer.github,
       category: "systems",
-      featured: false,
       icon: "fa-solid fa-user-secret",
     },
 
@@ -159,7 +138,6 @@ document.addEventListener("DOMContentLoaded", function () {
       technologies: ["Mininet", "Ryu", "Honeypots", "Network Security"],
       github: projectLinks.sdnHoneypots.github,
       category: "systems",
-      featured: false,
       icon: "fa-solid fa-shield-virus",
     },
     {
@@ -171,7 +149,6 @@ document.addEventListener("DOMContentLoaded", function () {
       technologies: ["IBM Qiskit", "Quantum Computing", "Python"],
       github: projectLinks.qrng.github,
       category: "systems",
-      featured: false,
       icon: "fa-solid fa-atom",
     },
   ];
@@ -240,11 +217,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let linksHTML = "";
 
     if (project.github) {
-      const isPlaceholder = project.github.startsWith("GITHUB_");
-      const displayUrl = isPlaceholder ? "#" : project.github;
-      const extraClass = isPlaceholder ? "disabled-placeholder" : "";
-      linksHTML += `<a href="${displayUrl}" target="_blank" class="btn btn-secondary ${extraClass}" aria-label="GitHub Repository"><i class="fab fa-github"></i> GitHub</a>`;
-    }
+            linksHTML += `<a href="${project.github}" target="_blank" class="btn btn-secondary" aria-label="GitHub Repository"><i class="fab fa-github"></i> GitHub</a>`;
+          }
 
     if (projectDetails[project.id]) {
       linksHTML += `<button class="btn btn-secondary open-modal-trigger" data-project="${project.id}"><i class="fas fa-list-ul"></i> Details</button>`;
@@ -321,20 +295,6 @@ document.addEventListener("DOMContentLoaded", function () {
   Object.entries(projectPages).forEach(([category, page]) => {
     renderProjectPage(category, page.containerId);
   });
-
-  // Attach click events to dynamic disabled links
-  function setupDisabledLinks() {
-    document.body.addEventListener("click", (e) => {
-      const btn = e.target.closest(".disabled-placeholder");
-      if (btn) {
-        e.preventDefault();
-        alert(
-          "This link is currently in development. Dynamic URLs can be configured at the top of script.js.",
-        );
-      }
-    });
-  }
-  setupDisabledLinks();
 
   // =========================================================
   // 2.5 MANUAL HORIZONTAL CAROUSEL BUTTONS TRANSLATE LOGIC
@@ -991,82 +951,6 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(typeEffect, 1500);
   }
 
-  // ==========================================
-  // 8. PROFILE FLIP CARD INTERACTION
-  // ==========================================
-  const flipCard = document.querySelector(".about-flip-card");
-  if (flipCard) {
-    flipCard.addEventListener("click", function () {
-      flipCard.classList.toggle("flipped");
-    });
-  }
-
-  // ==========================================
-  // 9. 3D DOMAIN CAROUSEL ROTATOR
-  // ==========================================
-  const carousel = document.querySelector(".carousel");
-  const cells = document.querySelectorAll(".carousel__cell");
-  const prevButton = document.getElementById("prev-button");
-  const nextButton = document.getElementById("next-button");
-
-  if (carousel && cells.length > 0) {
-    const cellCount = cells.length;
-    const theta = 360 / cellCount;
-    let rotateY = 0;
-
-    function rotateCarousel() {
-      carousel.style.transform = `rotateY(${rotateY}deg)`;
-      updateActiveCell();
-    }
-
-    function updateActiveCell() {
-      const activeCellIndex =
-        ((Math.round(-rotateY / theta) % cellCount) + cellCount) % cellCount;
-      cells.forEach((cell, idx) => {
-        if (idx === activeCellIndex) {
-          cell.classList.add("active-cell");
-        } else {
-          cell.classList.remove("active-cell");
-        }
-      });
-    }
-
-    function positionCells() {
-      cells.forEach((cell, i) => {
-        const angle = theta * i;
-        const radius = Math.round(
-          cell.offsetWidth / 2 / Math.tan(Math.PI / cellCount),
-        );
-        cell.style.transform = `rotateY(${angle}deg) translateZ(${radius + 20}px)`;
-      });
-      updateActiveCell();
-    }
-
-    prevButton.addEventListener("click", () => {
-      rotateY += theta;
-      rotateCarousel();
-    });
-
-    nextButton.addEventListener("click", () => {
-      rotateY -= theta;
-      rotateCarousel();
-    });
-
-    // Setup click handler on cell items for manual rotation
-    cells.forEach((cell, i) => {
-      cell.addEventListener("click", () => {
-        rotateY = -theta * i;
-        rotateCarousel();
-      });
-    });
-
-    positionCells();
-    window.addEventListener("resize", positionCells);
-  }
-
-  // ==========================================
-  // 10. MODALS MANAGER
-  // ==========================================
   function setupModal(modalId, closeBtnClass) {
     const modal = document.getElementById(modalId);
     const closeBtn = document.querySelector(`.${closeBtnClass}`);
@@ -1144,18 +1028,6 @@ document.addEventListener("DOMContentLoaded", function () {
       burger.classList.toggle("toggle");
     });
   }
-
-  // Reset page-content-wrapper transforms on window resize to mobile
-  window.addEventListener("resize", () => {
-    if (window.innerWidth <= 768) {
-      document.querySelectorAll(".page-content-wrapper").forEach((wrapper) => {
-        wrapper.style.transform = "";
-        wrapper.style.opacity = "";
-      });
-    } else {
-      handleScrollTransforms();
-    }
-  });
 
   // If certificate image fails to load, update the modal button's target URL to the fallback too
   document.querySelectorAll(".cert-card-image-wrapper img").forEach((img) => {

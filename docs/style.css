@@ -30,7 +30,7 @@
 
   /* Page 05: AI (Magenta / Purple Accent) */
   --ai-accent: #e83ebc;
-  --ai-accent-hover: #a855f7;
+  /* --ai-accent-hover: #a855f7; */
   --ai-accent-glow: rgba(232, 62, 188, 0.22);
   --ai-accent-border: rgba(232, 62, 188, 0.35);
 
@@ -200,14 +200,7 @@ body {
     #050102 100%
   );
 }
-#projects-ai {
-  background: radial-gradient(
-    circle at 85% 40%,
-    rgba(232, 62, 188, 0.25) 0%,
-    rgba(168, 85, 247, 0.08) 50%,
-    #0b0110 100%
-  );
-}
+
 #projects-systems {
   background: radial-gradient(
     circle at 25% 60%,
@@ -289,11 +282,6 @@ body {
   right: 20%;
   opacity: 0.22;
 }
-#projects-ai::before {
-  background: #e83ebc;
-  top: -10%;
-  left: 15%;
-}
 #projects-systems::before {
   background: #ffa000;
   bottom: 20%;
@@ -319,11 +307,6 @@ body {
     transform: translate(60px, -60px) scale(1.15) rotate(30deg);
   }
 }
-
-/* Ambient line animations */
-.ambient-bg-curves {
-  display: none;
-} /* Disabled to prioritize pure mesh background gradients */
 
 /* ==========================================================================
    4. NAVIGATION SYSTEM & HEADER
@@ -701,26 +684,6 @@ nav {
   pointer-events: none;
 }
 
-/* Character image wrapper */
-/* .hero-character-wrapper {
-    width: 380px;
-    height: 500px;
-    z-index: 4;
-    overflow: hidden;
-    position: relative;
-}
-
-.character-frame {
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    border: 1.5px solid var(--home-accent-border);
-    padding: 6px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255, 255, 255, 0.01));
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 25px var(--home-accent-glow);
-    overflow: hidden;
-} */
-
 .walking-character {
   width: 100%;
   height: 100%;
@@ -819,111 +782,10 @@ nav {
   line-height: 1.7;
 }
 
-/* About Statistics cards - Glassmorphic, Soft violet glow */
-.stats-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 2.5rem;
-}
-
-.stat-box {
-  background-color: rgba(255, 255, 255, 0.01);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(155, 92, 255, 0.18);
-  padding: 1.5rem 1.25rem;
-  border-radius: 12px;
-  text-align: center;
-  transition: var(--transition-smooth);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.stat-box:hover {
-  border-color: var(--about-accent);
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(155, 92, 255, 0.25);
-}
-
-.stat-num {
-  display: block;
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: #ffffff;
-  font-family: var(--font-mono);
-}
-
-.stat-label {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
 .about-card-container {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.about-flip-card {
-  background-color: transparent;
-  width: 290px;
-  height: 360px;
-  perspective: 1000px;
-  cursor: pointer;
-}
-
-.about-flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  transform-style: preserve-3d;
-  border-radius: 20px;
-  border: 1px solid var(--border-color);
-  padding: 5px;
-}
-
-.about-flip-card.flipped .about-flip-card-inner {
-  transform: rotateY(180deg);
-  border-color: var(--accent-current);
-  box-shadow: 0 15px 30px var(--accent-glow-current);
-}
-
-.about-card-front,
-.about-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.about-card-front img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.about-card-back {
-  background-color: #0e0012;
-  color: white;
-  transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  border: 1px solid var(--accent-border-current);
-}
-
-.about-card-back h4 {
-  font-size: 1.6rem;
-  font-weight: 700;
 }
 
 /* ==========================================================================
@@ -1009,112 +871,6 @@ nav {
   border-color: var(--accent-current);
   color: #ffffff;
   transform: translateY(-2px);
-}
-
-/* Competency Carousel Rotator styles */
-.carousel-showcase-compact {
-  background-color: var(--bg-card-current);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  height: 240px;
-}
-
-.carousel-showcase-compact h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
-}
-
-.scene {
-  width: 220px;
-  height: 100px;
-  perspective: 800px;
-  position: relative;
-  margin-top: 10px;
-}
-
-.carousel {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.carousel__cell {
-  position: absolute;
-  width: 180px;
-  height: 70px;
-  left: 20px;
-  top: 15px;
-  backface-visibility: hidden;
-  cursor: pointer;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.carousel__cell-content {
-  width: 100%;
-  height: 100%;
-  background-color: #121216;
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.3rem;
-  color: white;
-  font-weight: 600;
-  font-size: 0.85rem;
-  transition:
-    border-color 0.5s,
-    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.5s;
-}
-
-.carousel__cell.active-cell .carousel__cell-content {
-  border-color: var(--accent-current);
-  box-shadow: 0 0 15px var(--accent-glow-current);
-  transform: scale(1.08);
-}
-
-.carousel__cell i {
-  font-size: 1.45rem;
-  color: var(--accent-current);
-}
-
-.carousel-nav {
-  display: flex;
-  gap: 1.5rem;
-  margin-top: auto;
-}
-
-.carousel-button {
-  background: none;
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: var(--transition-smooth);
-}
-
-.carousel-button:hover {
-  border-color: var(--accent-current);
-  background-color: var(--accent-glow-current);
-  color: white;
 }
 
 /* ==========================================================================
@@ -1212,13 +968,6 @@ nav {
   padding: 1rem 0;
 }
 
-.projects-carousel-track {
-  display: flex;
-  gap: 2rem;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  width: max-content;
-}
-
 /* Symmetric project card layout (Width: 330px, Height: 460px) */
 .project-card {
   width: 100%;
@@ -1301,7 +1050,6 @@ nav {
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  /* height: 58px; */
 }
 
 .project-tech {
@@ -1309,8 +1057,6 @@ nav {
   flex-wrap: wrap;
   gap: 0.35rem;
   margin-bottom: 1rem;
-  /* height: 52px; */
-  /* overflow: hidden; */
   align-items: flex-start;
 }
 
@@ -1332,101 +1078,6 @@ nav {
   flex: 1;
 }
 
-.disabled-placeholder {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-/* ==========================================================================
-   10.5. PAGE 05: AI / PYTHON PAGE (FULL VIEWPORT FEATURE)
-   ========================================================================== */
-.ai-page-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
-  padding-top: 4.5rem;
-  padding-bottom: 2rem;
-}
-
-.ai-horizontal-featured-block {
-  display: flex;
-  gap: 3.5rem;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--ai-accent-border);
-  border-radius: 20px;
-  padding: 2.5rem;
-  width: 100%;
-  height: calc(100vh - 280px);
-  max-height: 500px;
-  box-shadow: 0 15px 40px var(--ai-accent-glow);
-  transition: var(--transition-smooth);
-  transform-style: preserve-3d;
-}
-
-.ai-horizontal-featured-block:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 45px var(--ai-accent-glow);
-}
-
-.ai-featured-image-wrapper {
-  width: 50%;
-  height: 100%;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.ai-featured-image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.ai-horizontal-featured-block:hover .ai-featured-image-wrapper img {
-  transform: scale(1.04);
-}
-
-.ai-featured-info {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-}
-
-.ai-featured-info h4 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: white;
-}
-
-.ai-featured-info p {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 2rem;
-}
-
-.ai-featured-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
-}
-
-.ai-featured-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.ai-featured-links .btn {
-  padding: 0.75rem 1.75rem;
-}
-
 /* ==========================================================================
    10.6. PAGE 06: SYSTEMS & ACADEMIC GRID (4 Cards in one row on desktop)
    ========================================================================== */
@@ -1439,21 +1090,6 @@ nav {
   padding-bottom: 2rem;
 }
 
-.systems-projects-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  width: 100%;
-  margin-top: 1.5rem;
-  justify-content: center;
-}
-
-/* Systems page uses the same card styles */
-.systems-projects-row .project-card {
-  flex: auto;
-  width: 100%;
-}
-
 /* ==========================================================================
    11. PAGE 07: EXPERIENCE PAGE — COMPLETE REDESIGN (CENTERED GRID)
    ========================================================================== */
@@ -1464,14 +1100,6 @@ nav {
   justify-content: flex-start;
   padding-top: 60px;
   padding-bottom: 16px;
-}
-
-.exp-edu-grid-new {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  width: 100%;
-  margin-bottom: 1rem;
 }
 
 .exp-card-new,
@@ -1942,19 +1570,6 @@ nav {
   color: #ff2d8d;
 }
 
-.contact-card.card-whatsapp:hover {
-  border-color: #25d366;
-  background: linear-gradient(
-    135deg,
-    rgba(37, 211, 102, 0.06) 0%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  box-shadow: 0 15px 30px rgba(37, 211, 102, 0.25);
-}
-.contact-card.card-whatsapp i {
-  color: #25d366;
-}
-
 .contact-card.card-linkedin:hover {
   border-color: #0077b5;
   background: linear-gradient(
@@ -2199,39 +1814,6 @@ footer {
     gap: 1.5rem;
   }
 
-  .projects-horizontal-layout {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
-    height: calc(100vh - 220px);
-    gap: 1.5rem;
-  }
-
-  .featured-card-wrapper {
-    height: auto;
-  }
-
-  .featured-project-card {
-    height: auto;
-    flex-direction: row;
-  }
-
-  .featured-project-image {
-    width: 40%;
-    height: 100%;
-  }
-
-  .featured-project-info {
-    width: 60%;
-  }
-
-  .systems-projects-row {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .exp-edu-grid-new {
-    grid-template-columns: 1fr;
-  }
-
   .cert-card-compact {
     flex: 0 0 calc((100% - 2rem) / 2);
     max-width: calc((100% - 2rem) / 2);
@@ -2465,18 +2047,6 @@ footer {
     width: 100%;
   }
 
-  .about-flip-card {
-    width: 240px !important;
-    height: 290px !important;
-  }
-
-  .about-card-front {
-    transform: rotateY(
-      0deg
-    ) !important; /* Ensure WebKit renders front side correctly */
-    z-index: 2;
-  }
-
   .about-details {
     text-align: center;
   }
@@ -2490,29 +2060,6 @@ footer {
     font-size: 0.95rem !important;
     line-height: 1.6 !important;
     margin-bottom: 1rem !important;
-  }
-
-  .stats-container {
-    grid-template-columns: repeat(
-      3,
-      1fr
-    ) !important; /* Row-based for vertical compression */
-    gap: 0.5rem !important;
-    margin-top: 1.5rem !important;
-  }
-
-  .stat-box {
-    padding: 0.75rem 0.35rem !important;
-    border-radius: 8px !important;
-  }
-
-  .stat-num {
-    font-size: clamp(1.3rem, 5vw, 1.7rem) !important;
-  }
-
-  .stat-label {
-    font-size: 0.65rem !important;
-    line-height: 1.2;
   }
 
   /* Skills Mobile */
@@ -2542,18 +2089,6 @@ footer {
     font-size: 0.75rem !important;
   }
 
-  /* Skills Rotator Scaler */
-  .carousel-showcase-compact {
-    height: 220px !important;
-    padding: 1.25rem !important;
-  }
-
-  .scene {
-    transform: scale(0.85) !important;
-    transform-origin: center top !important;
-    margin: 0 auto !important;
-  }
-
   /* Projects Mobile */
   .carousel-navigation-arrows {
     display: none !important; /* Hide desktop navigation buttons */
@@ -2565,15 +2100,6 @@ footer {
     width: 100% !important;
     height: auto !important;
     padding: 0.5rem 0 !important;
-  }
-
-  .projects-carousel-track {
-    display: flex !important;
-    flex-direction: column !important; /* Stack cards vertically */
-    align-items: center !important;
-    gap: 1.5rem !important;
-    width: 100% !important;
-    transform: none !important; /* Disable any script-driven horizontal translation */
   }
 
   .project-card {
@@ -2622,73 +2148,10 @@ footer {
     font-size: 0.8rem !important;
   }
 
-  /* AI Mobile */
-  .ai-page-container {
-    padding-top: 2rem !important;
-    width: 100% !important;
-  }
-
-  .ai-horizontal-featured-block {
-    flex-direction: column !important;
-    height: auto !important;
-    max-height: none !important;
-    padding: 1.25rem !important;
-    gap: 1.25rem !important;
-    width: 100% !important;
-  }
-
-  .ai-featured-image-wrapper {
-    width: 100% !important;
-    height: 160px !important;
-  }
-
-  .ai-featured-info {
-    width: 100% !important;
-    text-align: center !important;
-  }
-
-  .ai-featured-info h4 {
-    font-size: 1.3rem !important;
-    margin-bottom: 0.75rem !important;
-  }
-
-  .ai-featured-info p {
-    font-size: 0.9rem !important;
-    margin-bottom: 1.25rem !important;
-  }
-
-  .ai-featured-tech {
-    justify-content: center !important;
-    margin-bottom: 1.25rem !important;
-  }
-
-  .ai-featured-links {
-    flex-direction: column !important;
-    gap: 0.5rem !important;
-    width: 100% !important;
-  }
-
-  .ai-featured-links .btn {
-    width: 100% !important;
-    padding: 0.7rem 1rem !important;
-  }
-
   /* Systems Mobile */
   .systems-page-container {
     padding-top: 2rem !important;
     width: 100% !important;
-  }
-
-  .systems-projects-row {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-    margin-top: 1rem !important;
-    justify-items: center !important;
-    width: 100% !important;
-  }
-
-  .systems-projects-row .project-card {
-    max-width: 290px !important;
   }
 
   /* Certifications Mobile */
@@ -2776,12 +2239,6 @@ footer {
     display: none !important; /* Hide arrows since list is vertically scrollable */
   }
 
-  /* Experience Mobile */
-  .exp-edu-grid-new {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
   /* Contact Mobile */
   .contact-header h2 {
     font-size: clamp(1.8rem, 6vw, 2.4rem) !important;
@@ -2833,12 +2290,6 @@ footer {
   }
 }
 
-@media screen and (max-width: 360px) {
-  .scene {
-    transform: scale(0.72) !important;
-  }
-}
-
 /* Reduced Motion Mode Support */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -2870,10 +2321,6 @@ footer {
   .experience-redesign-container {
     padding-bottom: 1rem;
   }
-  .exp-edu-grid-new {
-    margin-bottom: 1rem;
-    gap: 1.5rem;
-  }
   .exp-card-new,
   .edu-card-new {
     padding: 1.25rem;
@@ -2902,24 +2349,6 @@ footer {
   .systems-page-container {
     padding-top: 3.5rem;
     padding-bottom: 1.5rem;
-  }
-  .systems-projects-row .project-card {
-    height: 400px;
-  }
-  .systems-projects-row .project-card .project-image-wrapper {
-    height: 70px;
-  }
-  .systems-projects-row .project-card .project-info {
-    height: calc(400px - 70px);
-    padding: 1rem;
-  }
-  .systems-projects-row .project-card .project-info p {
-    height: auto;
-    -webkit-line-clamp: 4;
-  }
-  .systems-projects-row .project-card .project-info .project-tech {
-    height: auto;
-    margin-bottom: 0.75rem;
   }
 }
 
@@ -2978,10 +2407,6 @@ footer {
     width: 480px;
     height: 600px;
   }
-  .about-flip-card {
-    width: 320px;
-    height: 400px;
-  }
   .about-grid {
     gap: 6rem;
   }
@@ -2993,21 +2418,6 @@ footer {
   }
   .skills-card {
     padding: 2.25rem;
-  }
-  .carousel-showcase-compact {
-    height: 270px;
-  }
-  .scene {
-    width: 250px;
-    height: 120px;
-  }
-  .carousel__cell {
-    width: 200px;
-    height: 80px;
-  }
-  .ai-horizontal-featured-block {
-    max-height: 580px;
-    height: calc(100vh - 300px);
   }
   .experience-redesign-container {
     padding-top: 110px;
